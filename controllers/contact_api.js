@@ -108,7 +108,7 @@ module.exports.updateContact = async (req, res) => {
 };
 
 module.exports.deleteContact = async (req, res) => {
-  const { name, phone_number } = req.body;
+  const { phone_number } = req.body;
   //deleting contact with the given phone number
   const contact = await Contact.findOne({ phone_number: phone_number });
   //ERROR

@@ -8,8 +8,10 @@ const client = new MongoClient(url);
 const db = client.db("suhas");
 const Admin = db.collection("Admin");
 
+
 module.exports.getToken = async (req, res) => {
   const { email, password } = req.body;
+  //findin the admin details
   const admin = await Admin.findOne({ email: email });
   console.log(admin);
   //if invalid admin email
@@ -21,6 +23,7 @@ module.exports.getToken = async (req, res) => {
   if (admin.password !== password) {
     return res.status(401).json({ msg: "Incorrect password" });
   }
+  //making a token
   const token = JWT.sign({ admin }, process.env.SECRET_TOKEN, {
     expiresIn: "365d",
   });

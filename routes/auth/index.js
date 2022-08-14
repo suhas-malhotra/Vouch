@@ -5,7 +5,7 @@ const router = express.Router();
 //Authentication API
 
 // API
-// Authentication for Token
+// Get a JWT Token for authentication
 //API Working
 router.get("/token", authAPI.getToken);
 
